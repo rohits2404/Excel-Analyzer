@@ -100,17 +100,27 @@ const Navbar = () => {
                   </button>
                 </>
               ) : (
-                <button 
-                  onClick={() => {
-                    logout();
-                    navigate("/login");
-                  }}
-                  className="bg-white hover:bg-gray-100 text-[#217346] px-5 py-2.5 rounded-md text-lg font-semibold flex items-center transition-all duration-200 border border-transparent hover:border-[#2D7D4A]"
-                  style={{ fontFamily: "'Segoe UI', sans-serif" }}
-                >
-                  <FaSignOutAlt className="mr-3" />
-                  Logout
-                </button>
+                <>
+                  <div className="flex flex-col items-end mr-3">
+                    <span className="text-white font-medium text-sm" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
+                      {user.name}
+                    </span>
+                    <span className="text-[#A9D08E] text-xs" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
+                      {user.email}
+                    </span>
+                  </div>
+                  <button 
+                    onClick={() => {
+                      logout();
+                      navigate("/login");
+                    }}
+                    className="bg-white hover:bg-gray-100 text-[#217346] px-5 py-2.5 rounded-md text-lg font-semibold flex items-center transition-all duration-200 border border-transparent hover:border-[#2D7D4A]"
+                    style={{ fontFamily: "'Segoe UI', sans-serif" }}
+                  >
+                    <FaSignOutAlt className="mr-3" />
+                    Logout
+                  </button>
+                </>
               )}
             </div>
           </div>
@@ -135,6 +145,18 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-[#2D7D4A]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {user && (
+              <div className="px-4 py-3 border-b border-[#3A8C57]">
+                <div className="flex flex-col">
+                  <span className="text-white font-medium text-lg" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
+                    {user.name}
+                  </span>
+                  <span className="text-[#A9D08E] text-sm" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
+                    {user.email}
+                  </span>
+                </div>
+              </div>
+            )}
             {user?.role === "user" && (
               <>
                 <button
