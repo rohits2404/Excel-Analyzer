@@ -18,7 +18,7 @@ connectDB();
 
 const app = express();
 app.use(cors({
-    origin: 'https://excel-analyzer-psi.vercel.app/',
+    origin: 'https://excel-analyzer-psi.vercel.app',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
 }));
